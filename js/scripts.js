@@ -12,45 +12,34 @@
 // Ejemplo entrada: { password: "abc123" }
 // Ejemplo salida: {isValid: false, y tipo de error}
 
-const validatePassword = {
-    passwords:[],
-}
-console.log(validatePassword)
+const validatePassword = data => {
+  console.log(data);
 
+  const result = {
+    isValid: false,
+    errors: [],
+  };
 
-const passwordValidateCondition =(password) => {
-    let isValid = true;
-    const errors =[];
+  if (data.password.length < 8) {
+    result.errors.push("Password must be at least 8 characters long.");
+  }
+  if (!/[A-Z]/.test(data.password)) {
+    result.errors.push("Password must contain at least one uppercase letter.");
+  }
+  if (!/[a-z]/.test(data.password)) {
+    result.errors.push("Password must contain at least one lowercase letter.");
+  }
+  if (!/[0-9]/.test(data.password)) {
+    result.errors.push("Password must contain at least one number.");
+  }
 
-    if (password.length < 8) {
-        errors.push("Password must be at least 8 characters long.");
-        isValid = false;
-    }
+  result.isValid = result.errors.length === 0;
 
-    if(!/[A-Z]/.test(password)){
-        errors.push("Password must contain at least one uppercase letter.");
-        isValid = false;
-    }
+  console.log(result);
+};
 
-    if(!/[a-z]/.test(password)){
-        errors.push("Password must contain at least one lowercase letter.");
-        isValid = false;
-    }
-
-    if(!/[0-9]/.test(password)){
-        errors.push("Password must contain at least one number.");
-        isValid = false;
-    }
-    if(isValid === true){
-        validatePassword.passwords.push(password)
-    }
-        
-    console.log(errors)
-}
-passwordValidateCondition('abc123');
-passwordValidateCondition('AyudaEn321please');
-
-console.log(validatePassword.passwords); 
+validatePassword({ password: "abc123" });
+validatePassword({ password: "AyudaEn321please" });
 
 //2️⃣ Sabrina y el sistema de evaluación de estudiantes:
 // Crea una función evaluateStudents que reciba un objeto que representa una asignatura (subject). Este objeto debe tener las propiedades:
@@ -73,31 +62,32 @@ console.log(validatePassword.passwords);
 // teacher: "Mr. Johnson",
 // passedStudents: [ Macarena, Abby, Sabrina ]}
 const evaluateStudents = {
-    subjectName: "Mathematics",
-    teacher: "Mr. Johnson",
-    students : {
-        Macarena: 8,
-        Bego: 4,
-        Abby: 6,
-        Camila: 3,
-        Sabrina:5
-    }
-}
+  subjectName: "Mathematics",
+  teacher: "Mr. Johnson",
+  students: {
+    Macarena: 8,
+    Bego: 4,
+    Abby: 6,
+    Camila: 3,
+    Sabrina: 5,
+  },
+};
 
-const noteEvaluation = (notes) =>{
-    let passedStudents = [];
-    
+const noteEvaluation = notes => {
+  let passedStudents = [];
+
   for (const note of notes.evaluateStudents.students) {
-    if(note>=5)
-        { 
-        passedStudents.push(note);
-        
-        console.log({ subjectName: subject.subjectName,
-            teacher: subject.teacher,
-            passedStudents: passedStudents})
-      }    
+    if (note >= 5) {
+      passedStudents.push(note);
+
+      console.log({
+        subjectName: subject.subjectName,
+        teacher: subject.teacher,
+        passedStudents: passedStudents,
+      });
+    }
   }
-}
+};
 
 //3️⃣ Abby y la traducción de palabras:
 // Crea una función translateWords que reciba un objeto translationTask con:
@@ -117,16 +107,31 @@ const noteEvaluation = (notes) =>{
 //{projectName: "Basic Translator",
 // translator: "Abby",
 // translated: [ 'hola', 'mundo' ]}
-const translateWords = {
+const translateWords = translatedWords => {
+  console.log(translatedWords);
+
+  const result = {
+    projectName: translationTask.projectName,
+    translator: translationTask.translator,
+    translated: [],
+  };
+
+  const translationTask = {
     projectName: "Basic Translator",
     translator: "Abby",
-    words: ['hello', 'world'],
-    dictionary: { 
-        hello: 'hola', 
-        world: 'mundo' },
-}
+    words: ["hello", "world"],
+    dictionary: {
+      hello: "hola",
+      world: "mundo",
+    },
+  };
 
-const translationTask = (words) = {
+  for (const word of translateWords.words[dictionary]) {
+    translateWords.translated.push();
+  }
 
+  console.log(translated);
+};
 
-}
+translateWords({ translationTask: "hello" });
+translateWords({ translationTask: "world" });
