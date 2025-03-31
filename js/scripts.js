@@ -1,137 +1,110 @@
-//Ejercicios de Objetos con Arrays, Bucles, Strings, Condicionales y Lógica
-//const alphabetLowerCase = 'abcdefghijklmnñopqrstuvwxyz';
-//const alphabetUpperCase = /[A-Z]/;
-//const numbers = '123456' Olvidalo, nada de esto me funciono en la primera
+//# Ejercicios de Objetos
 
-//1️⃣ Macarena y la validación de contraseñas:
-// Crea una función validatePassword que reciba un objeto con una propiedad password (string) y devuelva un objeto con las propiedades isValid (boolean) y errors (array de strings) que indiquen si la contraseña cumple con los siguientes criterios:
-//Longitud mínima de 8 caracteres
-//Al menos una letra mayúscula
-// Al menos una letra minúscula test(.toLowerCase)
-// Al menos un número
-// Ejemplo entrada: { password: "abc123" }
-// Ejemplo salida: {isValid: false, y tipo de error}
+//## Lectura
 
-const validatePassword = data => {
-  console.log(data);
+//1️⃣ Saludar a través un objeto con nombre y ciudad; luego mostrar un mensaje de bienvenida en español.
+// Ejemplo entrada: {
+// name: "Camila",
+// city: "San Francisco"}
+// Ejemplo salida: "Hola Camila, has llegado a San Francisco."
+const welcomeMessageToUser = userInfo => {
+  console.log("Hola " + userInfo.name + ", has llegado a " + userInfo.city);
+};
+welcomeMessageToUser({ name: "Camila", city: "San Francisco" });
 
+//2️⃣ Verificar la mayoría de edad.
+// Ejemplo de entrada:
+// verificateUser({
+// name: "Abby",
+// age: 17});
+// Ejemplo de salida:"Abby es menor de edad" o "Abby es mayor de edad"
+const verificateUserAge = () => {
+  verificateUser = {
+    name: "Abby",
+    age: 17,
+  };
+  if (verificateUser.age < 21) {
+    console.log("Abby es menor de edad");
+  } else {
+    console.log("Abby es mayor de edad");
+  }
+};
+verificateUserAge();
+
+//3️⃣ Macarena y los promedios:Array de objetos student con name y grades (array de números). Calcular y mostrar el promedio.
+// Ejemplo de entrada: calculateStudentAverage(
+//[{name: "Bego",
+// grades: [8, 9, 10]},
+//{ name: "Abby",
+// grades: [8, 9, 10]}]);
+// Ejemplo de salida:
+// "El promedio de Bego es 9"
+// "El promedio de Abby es 9"
+const calculateStudentAverage = students => {
+  students.forEach(student => {
+    const gradesSum = student.grades.reduce((acc, grade) => {
+      return acc + grade;
+    });
+    averageTotalName = gradesSum / student.grades.length;
+
+    console.log(`El promedio de ${students.name} es ${averageTotalName}`);
+  });
+};
+calculateStudentAverage([
+  { name: "Bego", grades: [8, 9, 10] },
+  { name: "Abby", grades: [8, 9, 10] },
+]);
+
+//## Lectura y creación
+
+//4️⃣ Macarena y la clasificación de números:
+// Crea una función classifyNumbers que reciba un objeto con:
+// numbers: Array de números a clasificar.
+// Debe imprimir un objeto con dos arrays: números pares e impares.
+// Ejemplo de entrada: classifyNumbers({numbers: [1, 2, 3, 4, 5, 6]});
+// Ejemplo de salida: {result: { even: [2, 4, 6], odd: [1, 3, 5] }}
+const classifyNumbers = numbersToClassify => {
   const result = {
-    isValid: false,
-    errors: [],
+    even: [],
+    odd: [],
   };
 
-  if (data.password.length < 8) {
-    result.errors.push("Password must be at least 8 characters long.");
-  }
-  if (!/[A-Z]/.test(data.password)) {
-    result.errors.push("Password must contain at least one uppercase letter.");
-  }
-  if (!/[a-z]/.test(data.password)) {
-    result.errors.push("Password must contain at least one lowercase letter.");
-  }
-  if (!/[0-9]/.test(data.password)) {
-    result.errors.push("Password must contain at least one number.");
-  }
-
-  result.isValid = result.errors.length === 0;
+  const evenNumbers = numbersToClassify.numbers.filter(number => {
+    if (number % 2 === 0) {
+      result.even.push(number);
+    }
+  });
+  const oddNumbers = numbersToClassify.numbers.filter(number => {
+    if (number % 2 !== 0) {
+      result.odd.push(number);
+    }
+  });
 
   console.log(result);
 };
+classifyNumbers({ numbers: [1, 2, 3, 4, 5, 6] });
 
-validatePassword({ password: "abc123" });
-validatePassword({ password: "AyudaEn321please" });
-
-//2️⃣ Sabrina y el sistema de evaluación de estudiantes:
-// Crea una función evaluateStudents que reciba un objeto que representa una asignatura (subject). Este objeto debe tener las propiedades:
-// subjectName: El nombre de la asignatura (string).
-// teacher: El nombre del profesor a cargo (string).
-// students: Un objeto que contiene a los estudiantes como claves y sus notas (grades) como valores.
-// La función debe imprimir un objeto con la información de los estudiantes aprobados (note >= 5) junto con el nombre de la asignatura y el profesor.
-// // Ejemplo de entrada:
-// evaluateStudents({
-// subjectName: "Web Development",
-// teacher: "Mr. Dios",
-// students: {
-// Macarena: 8,
-// Bego: 4,
-// Abby: 6,
-// Camila: 3,
-// Sabrina:5
-// Ejemplo de salida:
-// {subjectName: "Mathematics",
-// teacher: "Mr. Johnson",
-// passedStudents: [ Macarena, Abby, Sabrina ]}
-const evaluateStudents = {
-  subjectName: "Mathematics",
-  teacher: "Mr. Johnson",
-  students: {
-    Macarena: 8,
-    Bego: 4,
-    Abby: 6,
-    Camila: 3,
-    Sabrina: 5,
-  },
-};
-
-const noteEvaluation = notes => {
-  let passedStudents = [];
-
-  for (const note of notes.evaluateStudents.students) {
-    if (note >= 5) {
-      passedStudents.push(note);
-
-      console.log({
-        subjectName: subject.subjectName,
-        teacher: subject.teacher,
-        passedStudents: passedStudents,
-      });
+//5️⃣ Camila y la clasificación de edades:
+// Debe imprimir un objeto con la clasificación en tres arrays: children, teens y adults.
+// Ejemplo de entrada: classifyAges({ages: [5, 12, 15, 19, 32, 7, 17]});
+// Ejemplo de salida:{ result: { children: [5, 12, 7], teens: [15, 17], adults: [19, 32] }}
+const classifyAges = ageRange => {
+  const agesCassifited = {
+    children: [],
+    teens: [],
+    adults: [],
+  };
+  const childrens = ageRange.ages.filter(age => {
+    if (age < 15) {
+      agesCassifited.children.push(age);
     }
-  }
+  });
+  const teen = ageRange.ages.filter(age => {
+    if (age < 19 && age > 13) {
+      agesCassifited.teens.push(age);
+    }
+  });
+
+  console.log(agesCassifited);
 };
-
-//3️⃣ Abby y la traducción de palabras:
-// Crea una función translateWords que reciba un objeto translationTask con:
-// projectName: Nombre del proyecto.
-// translator: Nombre del traductor.
-// words: Array de palabras a traducir.
-// dictionary: Objeto que mapea palabras originales a su traducción.
-// Debe devolver un objeto con el nombre del proyecto, el traductor y un array de palabras traducidas.
-// // Ejemplo de entrada:
-// translateWords({
-// projectName: "Basic Translator",
-// translator: "Abby",
-// words: ['hello', 'world'],
-// dictionary: { hello: 'hola', world: 'mundo' }
-// });
-// Ejemplo de salida:
-//{projectName: "Basic Translator",
-// translator: "Abby",
-// translated: [ 'hola', 'mundo' ]}
-const translateWords = translatedWords => {
-  console.log(translatedWords);
-
-  const result = {
-    projectName: translationTask.projectName,
-    translator: translationTask.translator,
-    translated: [],
-  };
-
-  const translationTask = {
-    projectName: "Basic Translator",
-    translator: "Abby",
-    words: ["hello", "world"],
-    dictionary: {
-      hello: "hola",
-      world: "mundo",
-    },
-  };
-
-  for (const word of translateWords.words[dictionary]) {
-    translateWords.translated.push();
-  }
-
-  console.log(translated);
-};
-
-translateWords({ translationTask: "hello" });
-translateWords({ translationTask: "world" });
+classifyAges({ ages: [5, 12, 15, 19, 32, 7, 17] });
