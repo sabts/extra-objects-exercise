@@ -118,6 +118,8 @@ classifyAges({ ages: [5, 12, 15, 19, 32, 7, 17] });
 // Ejemplo de entrada: changeTrafficLight({state: 'red'});
 // Ejemplo de salida: "El semáforo cambió a yellow"
 // Actualizar la propiedad state según el color actual y mostrar: "El semáforo cambió a ..."
+let trafficLights = { state: 'red' };
+
 const changeTrafficLight =(trafficLights) =>{
   if (trafficLights.state === 'red') {
     trafficLights.state = 'green';
@@ -129,8 +131,6 @@ const changeTrafficLight =(trafficLights) =>{
 
   console.log("El semáforo cambió a " + trafficLights.state);
 };
-
-let trafficLights = { state: 'red' };
 
 changeTrafficLight(trafficLights);
 changeTrafficLight(trafficLights);
