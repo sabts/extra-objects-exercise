@@ -118,25 +118,23 @@ classifyAges({ ages: [5, 12, 15, 19, 32, 7, 17] });
 // Ejemplo de entrada: changeTrafficLight({state: 'red'});
 // Ejemplo de salida: "El semáforo cambió a yellow"
 // Actualizar la propiedad state según el color actual y mostrar: "El semáforo cambió a ..."
-const changeTrafficLight =() =>{
-  const trafficLights ={
-    state:'red'}
+const changeTrafficLight =(trafficLights) =>{
+  if (trafficLights.state === 'red') {
+    trafficLights.state = 'green';
+  } else if (trafficLights.state === 'green') {
+    trafficLights.state = 'yellow';
+  } else if (trafficLights.state === 'yellow') {
+    trafficLights.state = 'red';
+  }
 
-    if(trafficLights.state === 'red'){
-      trafficLights.state = 'green'} 
+  console.log("El semáforo cambió a " + trafficLights.state);
+};
 
-    if(trafficLights.state === 'green'){
-        trafficLights.state = 'yellow'} 
+let trafficLights = { state: 'red' };
 
-    if(trafficLights.state === 'yellow'){
-        trafficLights.state = 'red'}
-
-console.log("El semáforo cambió a " + trafficLights.state)
-}
-
-changeTrafficLight('red')
-changeTrafficLight('green')
-changeTrafficLight('yellow')
+changeTrafficLight(trafficLights);
+changeTrafficLight(trafficLights);
+changeTrafficLight(trafficLights); 
 
 //7️⃣ Bego y la combinación de listas:
 // Crea una función combineLists que reciba un objeto listCombiner con:
@@ -145,15 +143,14 @@ changeTrafficLight('yellow')
 // Debe devolver un objeto con todas las combinaciones posibles entre nombres y apellidos.
 // Ejemplo de entrada: combineLists({names: ['Alice', 'Bob'], surnames: ['Smith', 'Johnson']});
 // Ejemplo de salida: {combinations: [ 'Alice Smith', 'Alice Johnson', 'Bob Smith', 'Bob Johnson' ]}
-const combineLists = (users) =>{
-const listCombiner = {
-  mames: [],
-  surnames:[]
-}
-for (let i = 0; i < users.names.length; i++) {
-  for (let j = 0; j < users.lastnames.length; j++) {
-    console.log(`${names[i]} ${lastnames[j]}`);
-
-
+const combineLists = (listCombiner) =>{
+  const combinations = [];
+  listCombiner.names.forEach(name => {
+    listCombiner.surnames.forEach(surname => {
+      combinations.push(`${name} ${surname}`);
+    });
+    return combinations
+  });
+ console.log(combinations)
 }
 combineLists({names: ['Alice', 'Bob'], surnames: ['Smith', 'Johnson']})
