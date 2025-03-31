@@ -47,7 +47,7 @@ const calculateStudentAverage = students => {
     });
     averageTotalName = gradesSum / student.grades.length;
 
-    console.log(`El promedio de ${students.name} es ${averageTotalName}`);
+    console.log(`El promedio de ${student.name} es ${averageTotalName}`);
   });
 };
 calculateStudentAverage([
@@ -100,11 +100,60 @@ const classifyAges = ageRange => {
     }
   });
   const teen = ageRange.ages.filter(age => {
-    if (age < 19 && age > 13) {
+    if (age < 18 && age > 13) {
       agesCassifited.teens.push(age);
+    }
+  });
+  const adult = ageRange.ages.filter(age => {
+    if (age >= 18) {
+      agesCassifited.adults.push(age);
     }
   });
 
   console.log(agesCassifited);
 };
 classifyAges({ ages: [5, 12, 15, 19, 32, 7, 17] });
+
+//6️⃣ Cambiar el estado de un semáforo. Objeto con state, elije uno de los tres ("red", "yellow", "green"). Pasar de red a green, luego a yellow, y de yellow a red, cíclicamente.
+// Ejemplo de entrada: changeTrafficLight({state: 'red'});
+// Ejemplo de salida: "El semáforo cambió a yellow"
+// Actualizar la propiedad state según el color actual y mostrar: "El semáforo cambió a ..."
+const changeTrafficLight =() =>{
+  const trafficLights ={
+    state:'red'}
+
+    if(trafficLights.state === 'red'){
+      trafficLights.state = 'green'} 
+
+    if(trafficLights.state === 'green'){
+        trafficLights.state = 'yellow'} 
+
+    if(trafficLights.state === 'yellow'){
+        trafficLights.state = 'red'}
+
+console.log("El semáforo cambió a " + trafficLights.state)
+}
+
+changeTrafficLight('red')
+changeTrafficLight('green')
+changeTrafficLight('yellow')
+
+//7️⃣ Bego y la combinación de listas:
+// Crea una función combineLists que reciba un objeto listCombiner con:
+// names: Array de nombres.
+// surnames: Array de apellidos.
+// Debe devolver un objeto con todas las combinaciones posibles entre nombres y apellidos.
+// Ejemplo de entrada: combineLists({names: ['Alice', 'Bob'], surnames: ['Smith', 'Johnson']});
+// Ejemplo de salida: {combinations: [ 'Alice Smith', 'Alice Johnson', 'Bob Smith', 'Bob Johnson' ]}
+const combineLists = (users) =>{
+const listCombiner = {
+  mames: [],
+  surnames:[]
+}
+for (let i = 0; i < users.names.length; i++) {
+  for (let j = 0; j < users.lastnames.length; j++) {
+    console.log(`${names[i]} ${lastnames[j]}`);
+
+
+}
+combineLists({names: ['Alice', 'Bob'], surnames: ['Smith', 'Johnson']})
